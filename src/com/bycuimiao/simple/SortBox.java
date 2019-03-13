@@ -1,5 +1,7 @@
 package com.bycuimiao.simple;
 
+import java.util.Arrays;
+
 /**
  * TODO completion javadoc.
  *
@@ -8,23 +10,25 @@ package com.bycuimiao.simple;
  */
 public class SortBox {
 	public static void main(String[] args) {
-		int [] arr = {2,3,1,4,5,8,7,9,6};
+		int[] arr = {2, 3, 1, 4, 5, 8, 7, 9, 6};
 		//bubblingSort(arr);
-		quicklySort(arr,0,arr.length-1);
-		for(int i = 0 ; i < arr.length ; i ++){
+		quickSort(arr, 0, arr.length - 1);
+		//quickSortOnline(arr, 0, arr.length - 1);
+		for (int i = 0; i < arr.length; i++) {
 			System.out.println(arr[i]);
 		}
+		//Arrays.sort(arr);
 	}
 
 	/**
 	 * 冒泡排序
 	 * @param arr
 	 */
-	private static void bubblingSort(int [] arr){
+	private static void bubblingSort(int[] arr) {
 		int t;
-		for(int i = 0 ; i < arr.length ; i ++){
-			for (int j = i + 1 ; j < arr.length ; j ++){
-				if(arr[i] > arr[j]){
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[i] > arr[j]) {
 					t = arr[i];
 					arr[i] = arr[j];
 					arr[j] = t;
@@ -37,7 +41,51 @@ public class SortBox {
 	 * 快速排序
 	 * @param
 	 */
-	public static void quicklySort(int[] a,int low,int high){
+	public static void quickSort(int[] arr, int low, int high) {
+		if (low >= high) {
+			return;
+		}
+		//选择基准
+		int key = arr[low];
+		//数组中比key小的放在左边，比key大的放在右边，key值下标为i
+		int i = low;
+		int j = high;
+		while (i < j) {
+			//j向左移，直到遇到比key小的值
+			while (arr[j] >= key && i < j) {
+				j--;
+			}
+			//i向右移，直到遇到比key大的值
+			while (arr[i] <= key && i < j) {
+				i++;
+			}
+			//i和j指向的元素交换
+			if (i < j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+		arr[low] = arr[i];
+		arr[i] = key;
 
+		quickSort(arr, low, i - 1);
+		quickSort(arr,  i + 1, high);
+
+	}
+
+	/**
+	 * 经典快排伪代码
+	 * @param array
+	 * @param left
+	 * @param right
+	 */
+	void quickSortByPseudocode(int array[], int left, int right) {
+		//Do nothing if left <= right
+		//p <- Get a number from array
+		//Put elements <= p to the left side
+		//Put elements >= p to the right side
+		//Put p in the middle slot which index is pivot
+		//Recursive quicksort the left parts and right parts
 	}
 }
