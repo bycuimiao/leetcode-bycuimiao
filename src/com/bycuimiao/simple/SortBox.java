@@ -10,7 +10,8 @@ import java.util.Arrays;
  */
 public class SortBox {
 	public static void main(String[] args) {
-		int[] arr = {2, 3, 1, 4, 5, 8, 7, 9, 6};
+		//int[] arr = {6, 3, 1, 4, 5, 8, 7, 9, 2};
+		int [] arr = {8,3,2,9,6,5,1,4,7};
 		//bubblingSort(arr);
 		quickSort(arr, 0, arr.length - 1);
 		//quickSortOnline(arr, 0, arr.length - 1);
@@ -41,36 +42,36 @@ public class SortBox {
 	 * 快速排序
 	 * @param
 	 */
-	public static void quickSort(int[] arr, int low, int high) {
-		if (low >= high) {
+	public static void quickSort(int[] arr, int left, int right) {
+		if (left >= right) {
 			return;
 		}
 		//选择基准
-		int key = arr[low];
+		int key = arr[left];
 		//数组中比key小的放在左边，比key大的放在右边，key值下标为i
-		int i = low;
-		int j = high;
-		while (i < j) {
-			//j向左移，直到遇到比key小的值
-			while (arr[j] >= key && i < j) {
-				j--;
+		int low = left;
+		int high = right;
+		while (low < high) {
+			//high向左移，直到遇到比key小的值
+			while (arr[high] >= key && low < high) {
+				high--;
 			}
-			//i向右移，直到遇到比key大的值
-			while (arr[i] <= key && i < j) {
-				i++;
+			//low向右移，直到遇到比key大的值
+			while (arr[low] <= key && low < high) {
+				low++;
 			}
-			//i和j指向的元素交换
-			if (i < j) {
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
+			//high和low指向的元素交换
+			if (low < high) {
+				int temp = arr[low];
+				arr[low] = arr[high];
+				arr[high] = temp;
 			}
 		}
-		arr[low] = arr[i];
-		arr[i] = key;
+		arr[left] = arr[low];
+		arr[low] = key;
 
-		quickSort(arr, low, i - 1);
-		quickSort(arr,  i + 1, high);
+		quickSort(arr, left, low - 1);
+		quickSort(arr,  low + 1, right);
 
 	}
 
