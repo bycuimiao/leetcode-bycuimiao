@@ -16,6 +16,27 @@ public class Temp {
 	}
 
 	private static void quickSort(int[] a , int low ,int high){
-
+		if(low >= high){
+			return;
+		}
+		int key = a[low];
+		int i = low;
+		int j = high;
+		while (i < j){
+			while (a[j] >= key && i<j){
+				j --;
+			}
+			while( a[i] <= key && i<j){
+				i ++;
+			}
+			int temp = a[j];
+			a[j] = a[i];
+			a[i] = temp;
+		}
+		int temp = a[i];
+		a[i] = key;
+		a[low] = temp;
+		quickSort(a,low,j-1);
+		quickSort(a,j+1,high-1);
 	}
 }
