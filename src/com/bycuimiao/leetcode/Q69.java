@@ -22,7 +22,7 @@ package com.bycuimiao.leetcode;
  */
 public class Q69 {
     public static void main(String[] args) {
-        System.out.println(mySqrt(25));
+        System.out.println(newtonSqrt(8));
     }
 
     /**
@@ -47,9 +47,11 @@ public class Q69 {
     //
 
     /**
-     * 牛顿迭代法
+     * 牛顿迭代法，最优解
+     * 这个博客解释的很清楚 https://www.cnblogs.com/qlky/p/7735145.html
      * 执行用时 : 6 ms, 在Sqrt(x)的Java提交中击败了94.30% 的用户
      * 内存消耗 : 32.7 MB, 在Sqrt(x)的Java提交中击败了93.12% 的用户
+     * 首先随便猜一个近似值res，然后不断令res等于res和x/res的平均数，迭代个六七次后x的值就已经相当精确了。
      * @param x
      * @return
      */
