@@ -15,7 +15,7 @@ import org.omg.Messaging.SYNC_WITH_TRANSPORT;
  */
 public class Q204 {
     public static void main(String[] args) {
-        System.out.println(countPrimes3(10));
+        System.out.println(countPrimes4(10));
     }
 
     /**
@@ -104,7 +104,7 @@ public class Q204 {
     /**
      * 执行用时 : 40 ms, 在Count Primes的Java提交中击败了40.00% 的用户
      * 内存消耗 : 44.7 MB, 在Count Primes的Java提交中击败了5.03% 的用户
-     *
+     * 浩哥解法
      * @param n
      * @return
      */
