@@ -15,7 +15,7 @@ import org.omg.Messaging.SYNC_WITH_TRANSPORT;
  */
 public class Q204 {
     public static void main(String[] args) {
-        System.out.println(countPrimes4(10));
+        System.out.println(countPrimes3(13));
     }
 
     /**
@@ -72,7 +72,8 @@ public class Q204 {
      * 厄拉多塞筛法
      * 比如说求20以内质数的个数,首先0,1不是质数.2是第一个质数,然后把20以内所有2的倍数划去.2后面紧跟的数即为下一个质数3,
      * 然后把3所有的倍数划去.3后面紧跟的数即为下一个质数5,再把5所有的倍数划去.以此类推.
-     * 35 ms	44.6 MB
+     * 执行用时 : 31 ms, 在Count Primes的Java提交中击败了61.49% 的用户
+     * 内存消耗 : 39.9 MB, 在Count Primes的Java提交中击败了7.60% 的用户
      * @param n
      * @return
      */
@@ -83,20 +84,19 @@ public class Q204 {
         int[] arr = new int[n];
         arr[0] = 1;
         arr[1] = 1;
+        int sum = n - 2;
         for (int i = 2; i < Math.sqrt(n); i++) {
             //这个就好了
             if (arr[i] == 0) {
-                for (int j = i * i; j < n; j = j + i)
-                    arr[j] = 1;
+                for (int j = i * i; j < n; j = j + i){
+                    arr[j] = arr[j] + 1;
+                    if(arr[j] == 1){
+                        sum --;
+                    }
+                }
             }
         }
-        int num = 0;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == 0) {
-                num++;
-            }
-        }
-        return num;
+        return sum;
     }
 
     /**
