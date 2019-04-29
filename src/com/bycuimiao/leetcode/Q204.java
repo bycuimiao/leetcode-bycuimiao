@@ -74,7 +74,7 @@ public class Q204 {
      * @param n
      * @return
      */
-    //超时1500000  用时1196毫秒，胃疼。。。
+
     public static int countPrimes3(int n){
         long time = System.currentTimeMillis();
         if(n < 3){
@@ -84,7 +84,8 @@ public class Q204 {
         arr[0] = 1;
         arr[1] = 1;
         for(int i = 2 ; i < Math.sqrt(n) ; i ++){
-            while (arr[i] != 0){
+            //超时1500000  用时1196毫秒，胃疼。。。
+            /*while (arr[i] != 0){
                 i++;
             }
             for(int j = i + 1 ; j < n ; j ++){
@@ -93,6 +94,11 @@ public class Q204 {
                         arr[j] = 1;
                     }
                 }
+            }*/
+            //这个就好了，40ms
+            if (arr[i] == 0) {
+                for (int j = i * i; j < n; j ++)
+                    arr[j] = 1;
             }
         }
         int num = 0;
