@@ -99,6 +99,42 @@ public class Q204 {
         return sum;
     }
 
+    private static int countPrimes33(int n){
+        //long time = System.currentTimeMillis();
+        if(n < 3){
+            return 0;
+        }
+        int[] arr = new int[n];
+        arr[0] = 1;
+        arr[1] = 1;
+        for(int i = 2 ; i < Math.sqrt(n) ; i ++){
+            //超时1500000  用时1196毫秒，胃疼。。。
+            /*while (arr[i] != 0){
+                i++;
+            }
+            for(int j = i + 1 ; j < n ; j ++){
+                if(arr[j] == 0){
+                    if(j % i == 0){
+                        arr[j] = 1;
+                    }
+                }
+            }*/
+            //这个就好了
+            if(arr[i]==0){
+                for(int j=i*i;j<n;j=j+i)
+                    arr[j]=1;
+            }
+        }
+        int num = 0;
+        for(int i = 0 ;i < n ; i ++){
+            if(arr[i] == 0){
+                num++;
+            }
+        }
+        //System.out.println(System.currentTimeMillis() - time );
+        return num;
+    }
+
     /**
      * 执行用时 : 40 ms, 在Count Primes的Java提交中击败了40.00% 的用户
      * 内存消耗 : 44.7 MB, 在Count Primes的Java提交中击败了5.03% 的用户
