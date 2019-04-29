@@ -77,7 +77,6 @@ public class Q204 {
      * @return
      */
     public static int countPrimes3(int n) {
-        //long time = System.currentTimeMillis();
         if (n < 3) {
             return 0;
         }
@@ -97,7 +96,6 @@ public class Q204 {
                 num++;
             }
         }
-        //System.out.println(System.currentTimeMillis() - time );
         return num;
     }
 
