@@ -46,7 +46,7 @@ public class SortBox {
      * @param
      */
     private static void quickSort(int[] a, int low, int high) {
-		/*while(low >= high){
+        if(low >= high){
 			return;
 		}
 		int key = a[low];
@@ -67,7 +67,7 @@ public class SortBox {
 		a[low] = a[i];
 		a[i] = key;
 		quickSort(a,low , i - 1 );
-		quickSort(a,i + 1 , high );*/
+		quickSort(a,i + 1 , high );
     }
 
     /**
@@ -141,4 +141,6 @@ public class SortBox {
         arr[a] = arr[b];
         arr[b] = temp;
     }
+
+
 }
