@@ -25,7 +25,7 @@ import java.util.*;
  * @Date 2019/11/7 9:13 下午
  * @Author bycuimiao
  **/
-public class RB46 {
+public class B46R1 {
     /**
      * 回溯算法
      * 可以通过这个例子理解“回溯”算法的“状态重置”的操作，“回溯搜索” = “深度优先遍历 + 状态重置 + 剪枝”。（“剪枝”可以通过第 47 题来理解。）
