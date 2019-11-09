@@ -85,7 +85,7 @@ public class AQ66 {
         //[6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]
         System.out.println("Integer.MAX_VALUE:"+Integer.MAX_VALUE);
         System.out.println("Long.MAX_VALUE:"+Long.MAX_VALUE);
-        int[] digits = {6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3};
+        int[] digits = {9,4,9,9};
         int[] res = obj.plusOne2(digits);
         for(int i = 0 ; i < res.length ; i ++){
             System.out.println(res[i]);
