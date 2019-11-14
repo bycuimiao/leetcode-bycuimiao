@@ -49,25 +49,18 @@ public class A784 {
 
     public void back(int n , char[] chars , int[] flags,List<String> resList){
         if(n >= chars.length){
-            for(int i = 0 ; i < resList.size() ; i ++){
-                if(resList.equals(charsToString(chars))){
+            /*for(int i = 0 ; i < resList.size() ; i ++){
+                if(resList.get(i).equals(charsToString(chars))){
                     return;
                 }
-            }
+            }*/
             resList.add(charsToString(chars));
             return ;
         }
-        for(int i = n ; i < chars.length ; i ++){
-            if(isAlphabet(chars[i]) && flags[i] < 2){
-                chars[i] = changeAlphabet(chars[i]);
-                flags[i]++;
-            }
-            back(i+1,chars,flags,resList);
-            if(isAlphabet(chars[i])){
-                chars[i] = changeAlphabet(chars[i]);
-            }else {
-                return;
-            }
+        back(n+1,chars,flags,resList);
+        if(isAlphabet(chars[n])){
+            chars[n] = changeAlphabet(chars[n]);
+            back(n + 1,chars,flags,resList);
         }
     }
 
@@ -81,6 +74,7 @@ public class A784 {
 
     public boolean isAlphabet(char c){
         return (c >= 'a' && c <='z') || (c >= 'A' && c <='Z');
+        //return (c >= 'a' && c <='z') ;
     }
 
     public String charsToString(char[] chars){

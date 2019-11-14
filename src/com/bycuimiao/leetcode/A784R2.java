@@ -35,7 +35,7 @@ public class A784R2 {
 
     public static void main(String[] args) {
         A784R2 solution = new A784R2();
-        String S = "a1b2";
+        String S = "ab";
         List<String> letterCasePermutation = solution.letterCasePermutation(S);
         System.out.println(letterCasePermutation);
     }
