@@ -7,5 +7,7 @@ package com.bycuimiao.leetcode;
  * @Author bycuimiao
  **/
 public class QQ {
-
+    public static void main(String[] args) {
+        System.out.println("1234".substring(2,3));
+    }
 }
