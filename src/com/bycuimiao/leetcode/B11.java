@@ -16,10 +16,24 @@ public class B11 {
     public int maxArea(int[] height) {
         int max = 0;
         int tmp = 0;
-        for(int i = 1 ; i < height.length ; i ++){
-            //tmp =
+        int i = 0;
+        int j = height.length-1;
+        while (i < j){
+            tmp = getArea(height[i],height[j],i,j);
+            if(tmp > max){
+                max = tmp;
+            }
+            if(height[i] < height[j]){
+                i ++;
+            }else {
+                j --;
+            }
         }
         return max;
+    }
+
+    public int getArea(int a ,int b ,int i ,int j){
+        return Math.min(a,b) * (j - i);
     }
 
     public static void main(String[] args) {
