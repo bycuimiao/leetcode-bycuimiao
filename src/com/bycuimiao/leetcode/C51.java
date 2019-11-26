@@ -17,6 +17,7 @@ public class C51 {
      * 26104ms
      * 20823
      * 13806
+     * 71
      * @param n
      * @return
      */
@@ -45,17 +46,19 @@ public class C51 {
             //剪枝
             return;
         }*/
-        for(int i = m ; i < n ; i ++){
-            for (int j = 0 ; j < n ; j ++){
-                if(res[i][j] == null){
+        /*for(int i = m ; i < n ; i ++){
+
+        }*/
+        int i = m;
+        for (int j = 0 ; j < n ; j ++){
+            if(res[i][j] == null){
                     /*if(!canSetQ(res,i,j)){
                         continue;
                     }*/
-                    List<List<Integer>> lists = new ArrayList<>();
-                    setQ(res,i,j,lists);
-                    backtrace(n,m+1,res,resList);
-                    popQ(res,i,j,lists);
-                }
+                List<List<Integer>> lists = new ArrayList<>();
+                setQ(res,i,j,lists);
+                backtrace(n,m+1,res,resList);
+                popQ(res,i,j,lists);
             }
         }
     }
