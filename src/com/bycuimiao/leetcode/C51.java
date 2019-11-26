@@ -11,6 +11,7 @@ import java.util.List;
  * @Author bycuimiao
  **/
 public class C51 {
+    int sum = 0;
     /**
      * 马丹，n=9的时候超时了
      * 26104ms
@@ -32,6 +33,10 @@ public class C51 {
             return;
         }
         if(m > n){
+            //剪枝
+            return;
+        }
+        if(n*n - sum < n-m){
             //剪枝
             return;
         }
@@ -105,6 +110,7 @@ public class C51 {
                     list.add(q);
                     list.add(p);
                     lists.add(list);
+                    sum ++;
                 }
                 if(p == j && res[q][p] == null){
                     res[q][p] = ".";
@@ -112,6 +118,7 @@ public class C51 {
                     list.add(q);
                     list.add(p);
                     lists.add(list);
+                    sum ++;
                 }
                 if(Math.abs(i-q) == Math.abs(j-p) && res[q][p] == null){
                     res[q][p] = ".";
@@ -119,6 +126,7 @@ public class C51 {
                     list.add(q);
                     list.add(p);
                     lists.add(list);
+                    sum ++;
                 }
             }
         }
@@ -128,6 +136,7 @@ public class C51 {
 
         for(int q = 0 ; q < lists.size() ; q ++ ){
             res[lists.get(q).get(0)][lists.get(q).get(1)] = null;
+            sum --;
         }
 
         /*for(int q = 0 ; q < res.length ; q ++){
