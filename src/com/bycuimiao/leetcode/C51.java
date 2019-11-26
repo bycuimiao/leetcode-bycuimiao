@@ -36,10 +36,11 @@ public class C51 {
             //剪枝
             return;
         }
-        if(n*n - sum < n-m){
+        /*if(n*n - sum < n-m){
+            //神奇，加完剪枝还TM慢了
             //剪枝
             return;
-        }
+        }*/
         /*if(!canContinue(res,n,m)){
             //剪枝
             return;
