@@ -1,5 +1,7 @@
 package com.bycuimiao.leetcode;
 
+import java.util.Arrays;
+
 /**
  * @Description
  * 给定一个无序的整数数组，找到其中最长上升子序列的长度。
@@ -24,29 +26,27 @@ package com.bycuimiao.leetcode;
 public class B300WWWW {
 
     public int lengthOfLIS(int[] nums) {
-        if(nums.length == 0){
+        int memo[][] = new int[nums.length + 1][nums.length];
+        for (int[] l : memo) {
+            Arrays.fill(l, -1);
+        }
+        return lengthofLIS(nums, -1, 0, memo);
+    }
+    public int lengthofLIS(int[] nums, int previndex, int curpos, int[][] memo) {
+        if (curpos == nums.length) {
             return 0;
         }
-        int[] dp = new int[nums.length];
-        /*for(int i = 0 ; i < dp.length ; i ++){
-            dp[i] = 1;
-        }*/
-        for(int i = 0 ; i < nums.length - 1 ; i ++){
-            int t = nums[i];
-            for(int j = i + 1 ; j < nums.length ; j ++){
-                if(t < nums[j]){
-                    dp[i] ++;
-                    t = nums[j];
-                }
-            }
+        if (memo[previndex + 1][curpos] >= 0) {
+            return memo[previndex + 1][curpos];
         }
-        int max = 0;
-        for(int num : dp){
-            if(num > max){
-                max = num;
-            }
+        int taken = 0;
+        if (previndex < 0 || nums[curpos] > nums[previndex]) {
+            taken = 1 + lengthofLIS(nums, curpos, curpos + 1, memo);
         }
-        return max + 1;
+
+        int nottaken = lengthofLIS(nums, previndex, curpos + 1, memo);
+        memo[previndex + 1][curpos] = Math.max(taken, nottaken);
+        return memo[previndex + 1][curpos];
     }
 
     public static void main(String[] args) {
