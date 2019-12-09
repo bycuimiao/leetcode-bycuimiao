@@ -26,7 +26,7 @@ public class B86 {
      *     ListNode(int x) { val = x; }
      * }
      */
-    public ListNode partition(ListNode head, int x) {
+    public ListNode partition1(ListNode head, int x) {
         // before and after are the two pointers used to create the two list
         // before_head and after_head are used to save the heads of the two lists.
         // All of these are initialized with the dummy nodes created.
@@ -63,6 +63,30 @@ public class B86 {
         return before_head.next;
     }
 
+
+
+    public ListNode partition(ListNode head, int x) {
+        ListNode beforeHead = new ListNode(0);
+        ListNode before = beforeHead;
+        ListNode afterHead = new ListNode(0);
+        ListNode after = afterHead;
+        ListNode node = head;
+        while (node != null){
+            if(node.val < x){
+                before.next = new ListNode(node.val);
+                before = before.next;
+
+            }else {
+                after.next = new ListNode(node.val);
+                after = after.next;
+            }
+            node = node.next;
+        }
+
+        before.next = afterHead.next;
+        return beforeHead.next;
+    }
+
     public static void main(String[] args) {
         B86 obj = new B86();
         ListNode head = new ListNode(1);
@@ -71,8 +95,8 @@ public class B86 {
         head.next.next.next = new ListNode(2);
         head.next.next.next.next = new ListNode(5);
         head.next.next.next.next.next = new ListNode(2);
-        obj.partition(head,3);
-        ListNode node = head;
+        ListNode node = obj.partition(head,3);
+        //ListNode node = head;
         while (node != null){
             System.out.println(node.val);
             node = node.next;
