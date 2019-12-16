@@ -25,8 +25,33 @@ package com.bycuimiao.leetcode;
  * @Date 2019/12/16 10:27 下午
  * @Author bycuimiao
  **/
-public class B287 {
+public class B287D {
+
+    //太难理解了，我尼玛啊
     public int findDuplicate(int[] nums) {
-        return 0;
+        // Find the intersection point of the two runners.
+        int tortoise = nums[0];
+        int hare = nums[0];
+        do {
+            tortoise = nums[tortoise];
+            hare = nums[nums[hare]];
+        } while (tortoise != hare);
+
+        // Find the "entrance" to the cycle.
+        int ptr1 = nums[0];
+        int ptr2 = tortoise;
+        while (ptr1 != ptr2) {
+            ptr1 = nums[ptr1];
+            ptr2 = nums[ptr2];
+        }
+
+        return ptr1;
+    }
+
+    public static void main(String[] args) {
+        B287D obj = new B287D();
+        int[] nums = {1,3,4,2,2};
+        int num = obj.findDuplicate(nums);
+        System.out.println(num);
     }
 }
