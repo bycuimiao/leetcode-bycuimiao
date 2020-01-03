@@ -17,10 +17,11 @@ public class B12 {
      * , 在所有 Java 提交中击败了
      * 100.00%
      * 的用户
+     * 智障解法
      * @param num
      * @return
      */
-    public String intToRoman(int num) {
+    public String intToRoman1(int num) {
         if(num > 3999){
             return "";
         }
@@ -82,6 +83,39 @@ public class B12 {
             }
         }
         return ans.toString();
+    }
+
+
+    /**
+     * 贪心
+     * 时间复杂度：O(1)O(1)，虽然看起来是两层循环，但是外层循环的次数最多 1212，内层循环的此时其实也是有限次的，综合一下，时间复杂度是 O(1)O(1)。
+     * 空间复杂度：O(1)O(1)，这里使用了两个辅助数字，空间都为 1313，还有常数个变量，故空间复杂度是 O(1)O(1)
+     *
+     * 作者：liweiwei1419
+     * 链接：https://leetcode-cn.com/problems/integer-to-roman/solution/tan-xin-suan-fa-by-liweiwei1419/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param num
+     * @return
+     */
+    public String intToRoman(int num) {
+        // 把阿拉伯数字与罗马数字可能出现的所有情况和对应关系，放在两个数组中
+        // 并且按照阿拉伯数字的大小降序排列，这是贪心选择思想
+        int[] nums = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] romans = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+        StringBuilder stringBuilder = new StringBuilder();
+        int index = 0;
+        while (index < 13) {
+            // 特别注意：这里是等号
+            while (num >= nums[index]) {
+                // 注意：这里是等于号，表示尽量使用大的"面值"
+                stringBuilder.append(romans[index]);
+                num -= nums[index];
+            }
+            index++;
+        }
+        return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
