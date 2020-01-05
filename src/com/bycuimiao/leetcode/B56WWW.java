@@ -23,7 +23,7 @@ import java.util.*;
  * @Date 2019/11/21 9:22 下午
  * @Author bycuimiao
  **/
-public class B56 {
+public class B56WWW {
     public int[][] merge(int[][] intervals) {
         if(intervals.length == 0 || intervals.length == 1){
             return intervals;
@@ -81,7 +81,7 @@ public class B56 {
 
     public static void main(String[] args) {
         int[][] intervals = {{1,3},{1,3},{8,10},{15,18}};
-        B56 obj = new B56();
+        B56WWW obj = new B56WWW();
         int[][] mergeArr = obj.merge(intervals);
         for(int i = 0 ; i < mergeArr.length ; i ++){
             for (int j = 0 ; j < mergeArr[i].length ; j ++){
